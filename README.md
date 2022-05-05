@@ -1,6 +1,6 @@
 # netflix-carousel-css-only
 
-The code from this YouTube video (link coming soon), where I did my best to clone the Netflix carousel UI using CSS only.
+The code from [this YouTube video](https://youtu.be/b--q6Fsf_cA), where I did my best to clone the Netflix carousel UI using CSS only.
 
 **This uses the `:has()` selector**. If you want to play with the code, make sure that [you're browser supports the `:has()` selector](https://caniuse.com/css-has).
 
