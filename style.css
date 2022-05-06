@@ -56,6 +56,12 @@ svg {
 
 .media-container {
   position: relative;
+  user-select: none;
+}
+
+.media-overflow {
+  padding: 0 3rem;
+  overflow-x: hidden;
 }
 
 .media-scroller,
@@ -66,11 +72,33 @@ svg {
 }
 
 .media-scroller {
-  overflow-x: hidden;
-  scroll-behavior: smooth;
   grid-auto-columns: 100%;
-  padding: 0 3rem;
-  scroll-padding-inline: 3rem;
+  padding: 0 .125rem;
+}
+
+.media-scroller > input[type="radio"] {
+  display: none;
+}
+
+.media-scroller {
+  margin-left: 0;
+  margin-right: 0;
+  transition: margin 500ms ease-in-out;
+}
+
+.media-scroller:has(> input[type="radio"]:checked:nth-of-type(2)) {
+  margin-left: -100%;
+  margin-right: 100%;
+}
+
+.media-scroller:has(> input[type="radio"]:checked:nth-of-type(3)) {
+  margin-left: -200%;
+  margin-right: 200%;
+}
+
+.media-scroller:has(> input[type="radio"]:checked:nth-of-type(4)) {
+  margin-left: -300%;
+  margin-right: 300%;
 }
 
 .media-group {
@@ -90,68 +118,59 @@ svg {
 
 .next,
 .previous {
-  display: none;
+  display: flex;
   align-items: center;
   z-index: 10;
   position: absolute;
-  width: 3rem;
+  top: 0;
+  bottom: 0;
+  width: 2.875rem;
   padding: 1rem;
-  background: rgb(0 0 0 / 0);
-  opacity: 0;
+  background: rgb(20 20 20 / 0.7);
+  border-radius: .2rem;
 }
 
 .previous {
   left: 0;
-  top: 0;
-  bottom: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .next {
   right: 0;
-  top: 0;
-  bottom: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-.media-group:first-child :where(.next, .previous) {
-  display: flex;
-}
-
-.media-scroller:hover :where(.next, .previous) {
-  opacity: 1;
-}
-
-:where(.next, .previous):hover {
-  background: rgb(0 0 0 / 0.3);
+input[type="radio"]:not(:checked) + .media-group :where(.next, .previous) {
+  display: none;
 }
 
 :where(.next, .previous) > svg {
   transition: transform 75ms linear;
   transform: scale(1);
 }
+
+.media-container:not(:hover) :where(.next, .previous) > svg {
+  visibility: hidden;
+}
+
 :where(.next, .previous):hover > svg {
   transform: scale(1.2);
-}
-
-.media-group:target :where(.next, .previous) {
-  display: flex;
-}
-
-.media-scroller:has(:target:not(:first-child))
-  .media-group:first-of-type
-  .next {
-  display: none;
 }
 
 /* navigation indicators */
 
 .navigation-indicators {
-  opacity: 0;
   position: absolute;
   display: flex;
   gap: 3px;
-
   top: -1rem;
   right: 2rem;
+}
+
+.media-container:not(:hover) .navigation-indicators {
+  display: none;
 }
 
 .navigation-indicators > * {
@@ -161,29 +180,9 @@ svg {
   opacity: 0.5;
 }
 
-.media-scroller:has(.media-group:target)
-  .navigation-indicators
-  > *:nth-child(1) {
-  opacity: 0.5;
-}
-
-.navigation-indicators > *:nth-child(1),
-.media-group:nth-child(1):target ~ .navigation-indicators > *:nth-child(1) {
-  opacity: 1;
-}
-
-.media-group:nth-child(2):target ~ .navigation-indicators > *:nth-child(2) {
-  opacity: 1;
-}
-
-.media-group:nth-child(3):target ~ .navigation-indicators > *:nth-child(3) {
-  opacity: 1;
-}
-
-.media-group:nth-child(4):target ~ .navigation-indicators > *:nth-child(4) {
-  opacity: 1;
-}
-
-.media-scroller:hover .navigation-indicators {
+.media-scroller > input[type="radio"]:checked:nth-of-type(1) ~ .navigation-indicators > :nth-child(1),
+.media-scroller > input[type="radio"]:checked:nth-of-type(2) ~ .navigation-indicators > :nth-child(2),
+.media-scroller > input[type="radio"]:checked:nth-of-type(3) ~ .navigation-indicators > :nth-child(3),
+.media-scroller > input[type="radio"]:checked:nth-of-type(4) ~ .navigation-indicators > :nth-child(4) {
   opacity: 1;
 }
