@@ -59,6 +59,10 @@ svg {
   user-select: none;
 }
 
+.media-container > input[type="radio"] {
+  display: none;
+}
+
 .media-overflow {
   padding: 0 3rem;
   overflow-x: hidden;
@@ -76,27 +80,23 @@ svg {
   padding: 0 .125rem;
 }
 
-.media-scroller > input[type="radio"] {
-  display: none;
-}
-
 .media-scroller {
   margin-left: 0;
   margin-right: 0;
   transition: margin 500ms ease-in-out;
 }
 
-.media-scroller:has(> input[type="radio"]:checked:nth-of-type(2)) {
+.media-container > input[type="radio"]:checked:nth-of-type(2) ~ * .media-scroller {
   margin-left: -100%;
   margin-right: 100%;
 }
 
-.media-scroller:has(> input[type="radio"]:checked:nth-of-type(3)) {
+.media-container > input[type="radio"]:checked:nth-of-type(3) ~ * .media-scroller {
   margin-left: -200%;
   margin-right: 200%;
 }
 
-.media-scroller:has(> input[type="radio"]:checked:nth-of-type(4)) {
+.media-container > input[type="radio"]:checked:nth-of-type(4) ~ * .media-scroller {
   margin-left: -300%;
   margin-right: 300%;
 }
@@ -127,6 +127,7 @@ svg {
   width: 2.875rem;
   padding: 1rem;
   background: rgb(20 20 20 / 0.7);
+  opacity: 1;
   border-radius: .2rem;
 }
 
@@ -142,7 +143,10 @@ svg {
   border-bottom-right-radius: 0;
 }
 
-input[type="radio"]:not(:checked) + .media-group :where(.next, .previous) {
+.media-container > input[type="radio"]:not(:checked):nth-of-type(1) ~ * .media-scroller > :nth-child(1) :where(.next, .previous),
+.media-container > input[type="radio"]:not(:checked):nth-of-type(2) ~ * .media-scroller > :nth-child(2) :where(.next, .previous),
+.media-container > input[type="radio"]:not(:checked):nth-of-type(3) ~ * .media-scroller > :nth-child(3) :where(.next, .previous),
+.media-container > input[type="radio"]:not(:checked):nth-of-type(4) ~ * .media-scroller > :nth-child(4) :where(.next, .previous) {
   display: none;
 }
 
@@ -180,9 +184,9 @@ input[type="radio"]:not(:checked) + .media-group :where(.next, .previous) {
   opacity: 0.5;
 }
 
-.media-scroller > input[type="radio"]:checked:nth-of-type(1) ~ .navigation-indicators > :nth-child(1),
-.media-scroller > input[type="radio"]:checked:nth-of-type(2) ~ .navigation-indicators > :nth-child(2),
-.media-scroller > input[type="radio"]:checked:nth-of-type(3) ~ .navigation-indicators > :nth-child(3),
-.media-scroller > input[type="radio"]:checked:nth-of-type(4) ~ .navigation-indicators > :nth-child(4) {
+.media-container > input[type="radio"]:checked:nth-of-type(1) ~ .navigation-indicators > :nth-child(1),
+.media-container > input[type="radio"]:checked:nth-of-type(2) ~ .navigation-indicators > :nth-child(2),
+.media-container > input[type="radio"]:checked:nth-of-type(3) ~ .navigation-indicators > :nth-child(3),
+.media-container > input[type="radio"]:checked:nth-of-type(4) ~ .navigation-indicators > :nth-child(4) {
   opacity: 1;
 }
