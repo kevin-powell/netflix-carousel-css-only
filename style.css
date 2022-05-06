@@ -55,6 +55,12 @@ svg {
 /* media scroller */
 
 .media-container {
+  --items-per-page: 5;
+  --grid-gap: 0.25rem;
+  --grid-column-width:
+  calc( ( 100% - ( var(--items-per-page) - 1 ) * var(--grid-gap) ) / var(--items-per-page) );
+  --horizontal-margin: 3rem;
+  --border-radius: 0.25rem;
   position: relative;
   user-select: none;
 }
@@ -69,20 +75,19 @@ svg {
 }
 
 .media-overflow {
-  padding: 0 3rem;
+  padding: 0 var(--horizontal-margin);
   overflow-x: hidden;
 }
 
-.media-scroller,
-.media-group {
+.media-scroller {
   display: grid;
-  gap: 0.25rem;
+  gap: var(--grid-gap);
   grid-auto-flow: column;
 }
 
 ol.media-scroller {
-  grid-auto-columns: 100%;
-  padding: 0 .125rem;
+  grid-auto-columns: var(--grid-column-width);
+  padding: 0 calc(var(--grid-gap) / 2);
 }
 
 .media-scroller {
@@ -106,16 +111,12 @@ ol.media-scroller {
   margin-right: 300%;
 }
 
-.media-group {
-  grid-auto-columns: 1fr;
-}
-
-.media-element {
-  border-radius: 0.25rem;
+.media-scroller > li {
+  border-radius: var(--border-radius);
   overflow: hidden;
 }
 
-.media-element > img {
+.media-scroller > li > img {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
@@ -129,11 +130,11 @@ ol.media-scroller {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 2.875rem;
+  width: calc(var(--horizontal-margin) - var(--grid-gap) / 2);
   padding: 1rem;
   background: rgb(20 20 20 / 0.7);
   opacity: 1;
-  border-radius: .2rem;
+  border-radius: calc(var(--border-radius) * 4 / 5 );
 }
 
 .previous {
