@@ -112,15 +112,11 @@ svg {
   bottom: 0;
 }
 
-.media-group:first-child :where(.next, .previous) {
-  display: flex;
-}
-
-.media-scroller:hover :where(.next, .previous) {
+.media-group:hover :where(.next, .previous) {
   opacity: 1;
 }
 
-:where(.next, .previous):hover {
+:where(.next, .previous):not(div):hover {
   background: rgb(0 0 0 / 0.3);
 }
 
@@ -136,10 +132,8 @@ svg {
   display: flex;
 }
 
-.media-scroller:has(:target:not(:first-child))
-  .media-group:first-of-type
-  .next {
-  display: none;
+.media-scroller:hover .media-group:nth-child(1):hover .next{
+  display: flex
 }
 
 /* navigation indicators */
@@ -161,14 +155,7 @@ svg {
   opacity: 0.5;
 }
 
-.media-scroller:has(.media-group:target)
-  .navigation-indicators
-  > *:nth-child(1) {
-  opacity: 0.5;
-}
-
-.navigation-indicators > *:nth-child(1),
-.media-group:nth-child(1):target ~ .navigation-indicators > *:nth-child(1) {
+.media-group:nth-child(1):hover ~ .navigation-indicators > *:nth-child(1) {
   opacity: 1;
 }
 
@@ -184,6 +171,6 @@ svg {
   opacity: 1;
 }
 
-.media-scroller:hover .navigation-indicators {
+.media-group:hover ~ .navigation-indicators {
   opacity: 1;
 }
