@@ -91,24 +91,46 @@ ol.media-scroller {
 }
 
 .media-scroller {
-  margin-left: 0;
-  margin-right: 0;
   transition: margin 500ms ease-in-out;
+  --show-page: 1;
+  margin-left: calc(-100% * (var(--show-page) - 1 ));
+  margin-right: calc(100% * (var(--show-page) - 1 ));
 }
 
 .media-container > input[type="radio"]:checked:nth-of-type(2) ~ * .media-scroller {
-  margin-left: -100%;
-  margin-right: 100%;
+  --show-page: 2;
 }
 
 .media-container > input[type="radio"]:checked:nth-of-type(3) ~ * .media-scroller {
-  margin-left: -200%;
-  margin-right: 200%;
+  --show-page: 3;
 }
 
 .media-container > input[type="radio"]:checked:nth-of-type(4) ~ * .media-scroller {
-  margin-left: -300%;
-  margin-right: 300%;
+  --show-page: 4;
+}
+
+.media-container > input[type="radio"]:checked:nth-of-type(5) ~ * .media-scroller {
+  --show-page: 5;
+}
+
+.media-container > input[type="radio"]:checked:nth-of-type(6) ~ * .media-scroller {
+  --show-page: 6;
+}
+
+.media-container > input[type="radio"]:checked:nth-of-type(7) ~ * .media-scroller {
+  --show-page: 7;
+}
+
+.media-container > input[type="radio"]:checked:nth-of-type(8) ~ * .media-scroller {
+  --show-page: 8;
+}
+
+.media-container > input[type="radio"]:checked:nth-of-type(9) ~ * .media-scroller {
+  --show-page: 9;
+}
+
+.media-container > input[type="radio"]:checked:nth-of-type(10) ~ * .media-scroller {
+  --show-page: 10;
 }
 
 .media-scroller > li {
@@ -152,7 +174,13 @@ ol.media-scroller {
 .media-container > input[type="radio"]:not(:checked):nth-of-type(1) ~ .navigation-buttons > :nth-child(1) :where(.next, .previous),
 .media-container > input[type="radio"]:not(:checked):nth-of-type(2) ~ .navigation-buttons > :nth-child(2) :where(.next, .previous),
 .media-container > input[type="radio"]:not(:checked):nth-of-type(3) ~ .navigation-buttons > :nth-child(3) :where(.next, .previous),
-.media-container > input[type="radio"]:not(:checked):nth-of-type(4) ~ .navigation-buttons > :nth-child(4) :where(.next, .previous) {
+.media-container > input[type="radio"]:not(:checked):nth-of-type(4) ~ .navigation-buttons > :nth-child(4) :where(.next, .previous),
+.media-container > input[type="radio"]:not(:checked):nth-of-type(5) ~ .navigation-buttons > :nth-child(5) :where(.next, .previous),
+.media-container > input[type="radio"]:not(:checked):nth-of-type(6) ~ .navigation-buttons > :nth-child(6) :where(.next, .previous),
+.media-container > input[type="radio"]:not(:checked):nth-of-type(7) ~ .navigation-buttons > :nth-child(7) :where(.next, .previous),
+.media-container > input[type="radio"]:not(:checked):nth-of-type(8) ~ .navigation-buttons > :nth-child(8) :where(.next, .previous),
+.media-container > input[type="radio"]:not(:checked):nth-of-type(9) ~ .navigation-buttons > :nth-child(9) :where(.next, .previous),
+.media-container > input[type="radio"]:not(:checked):nth-of-type(10) ~ .navigation-buttons > :nth-child(10) :where(.next, .previous) {
   display: none;
 }
 
@@ -193,6 +221,12 @@ ol.media-scroller {
 .media-container > input[type="radio"]:checked:nth-of-type(1) ~ .navigation-indicators > :nth-child(1),
 .media-container > input[type="radio"]:checked:nth-of-type(2) ~ .navigation-indicators > :nth-child(2),
 .media-container > input[type="radio"]:checked:nth-of-type(3) ~ .navigation-indicators > :nth-child(3),
-.media-container > input[type="radio"]:checked:nth-of-type(4) ~ .navigation-indicators > :nth-child(4) {
+.media-container > input[type="radio"]:checked:nth-of-type(4) ~ .navigation-indicators > :nth-child(4),
+.media-container > input[type="radio"]:checked:nth-of-type(5) ~ .navigation-indicators > :nth-child(5),
+.media-container > input[type="radio"]:checked:nth-of-type(6) ~ .navigation-indicators > :nth-child(6),
+.media-container > input[type="radio"]:checked:nth-of-type(7) ~ .navigation-indicators > :nth-child(7),
+.media-container > input[type="radio"]:checked:nth-of-type(8) ~ .navigation-indicators > :nth-child(8),
+.media-container > input[type="radio"]:checked:nth-of-type(9) ~ .navigation-indicators > :nth-child(9),
+.media-container > input[type="radio"]:checked:nth-of-type(10) ~ .navigation-indicators > :nth-child(10) {
   opacity: 1;
 }
